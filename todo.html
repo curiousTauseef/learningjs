@@ -1,0 +1,83 @@
+<html>
+<head>
+	<script src="https://fb.me/react-15.0.1.js"></script>
+	<script src="https://fb.me/react-dom-15.0.1.js"></script>
+
+	<script src="https://fb.me/JSXTransformer-0.12.2.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+<div id="todo"></div>
+	<script type="text/babel">
+
+ var TodoApp = React.createClass({
+	 getInitialState: function(){
+					return {
+						items: []
+					};
+				},
+	 updateItems: function(nItem){
+		 var allItems = this.state.items.concat([nItem]);
+				this.setState({items: allItems});
+		   },
+	 render: function(){
+			return (
+				<div> <TodoBanner/> <TodoList items={this.state.items}/>
+				      <TodoForm onFormSubmit={this.updateItems}/>
+				</div> );
+		  }
+		  });
+   var TodoBanner = React.createClass({
+				render: function(){
+					return (
+					 <h3>write it down! </h3> ); } });
+		var TodoList = React.createClass({
+				render: function()
+					  	{
+								var createItem = function(itemText)
+								{
+								 return(
+									  <TodoListItem>
+										 {itemText}
+										</TodoListItem> );
+							  };
+						return <ul>{this.props.items.map(createItem)}</ul>;
+						 }
+					  });
+		var TodoListItem = React.createClass({
+					render: function(){
+						return ( <li>{this.props.children}</li>
+								);
+							}
+						});
+		var TodoForm = React.createClass({
+				getInitialState: function() {
+				return {item: ''};
+		    	},
+
+		     handleSubmit: function(e){
+					  e.preventDefault();
+						this.props.onFormSubmit(this.state.item);
+						this.setState({
+										item: ''
+									});
+						React.findDOMNode(this.refs.item).focus(); return; },
+
+					onChange: function(e){
+										this.setState({
+												item: e.target.value });
+									 },
+
+								 render: function(){
+									 return (
+										 <form onSubmit={this.handleSubmit}>
+										 				<input type='text' ref='item' onChange={this.onChange} value={this.state.item}/>
+										 				<input type='submit' value='Add'/>
+											</form>
+										);
+									 }
+								 });
+								   ReactDOM.render(<TodoApp/>, document.getElementById('todo'));
+    </script>
+</body>
+</html>
