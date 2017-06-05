@@ -1,0 +1,18 @@
+{
+  "name": "blog-docker-node",
+  "version": "1.0.0",
+  "description": "Example node app showing demonstrating how to dockerize a node application",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elkdanger/blog-docker-node.git"
+  },
+  "author": "Steve Hobbs <elkdanger@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elkdanger/blog-docker-node/issues"
+  },
+  "homepage": "https://github.com/elkdanger/blog-docker-node#readme"
+}
