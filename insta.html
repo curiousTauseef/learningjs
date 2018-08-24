@@ -1,0 +1,95 @@
+<html>
+<head>
+<script src="https://fb.me/react-15.0.1.js"></script>
+<script src="https://fb.me/react-dom-15.0.1.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0-alpha1/JSXTransformer.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+</head>
+<body>
+  <div id="container"></div>
+  <div id="container2"></div>
+<script type="text/babel">
+var Photo = React.createClass({
+
+  toggleLiked: function() {
+    this.setState({
+      liked: !this.state.liked
+    });
+  },
+
+  getInitialState: function() {
+    return {
+      liked: false
+    };
+  },
+
+  render: function() {
+    var buttonClass = this.state.liked ? 'active' : '';
+
+    return (
+      <div className='photo'>
+        <img src={this.props.src} />
+
+        <div className='bar'>
+          <button onClick={this.toggleLiked} className={buttonClass}>
+            Like
+          </button>
+          <span>{this.props.caption}</span>
+        </div>
+      </div>
+    );
+  }
+});
+
+var PhotoGallery = React.createClass({
+
+  render: function() {
+
+    var photos = this.props.photos.map(function(photo) {
+      return <Photo src={photo.url} caption={photo.caption} key={photo.id}/>
+    });
+
+    return (
+      <div className='photo-gallery'>
+        {photos}
+      </div>
+    );
+  }
+});
+
+var data = [
+  {
+    url: 'fractal.png',
+    caption: 'Fractal!',
+    id: '101'
+  },
+  {
+    url: 'forest.jpeg',
+    caption: 'forrest',
+    id: '102'
+  },
+  {
+    url: 'stars.jpg',
+    caption: 'Piano guys',
+    id: '103'
+  }
+];
+
+ReactDOM.render(<PhotoGallery photos={data} />, document.getElementById("container"));
+
+
+var HelloMessage = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+
+ReactDOM.render(<HelloMessage name="John" />, container2);
+//key={result.id}
+
+///ReactDOM.render(<Photo src='fractal.png' caption='Fractal Analytics. Influencing the future' />, document.getElementById("container"));
+
+</script>
+
+</body>
+</html>
