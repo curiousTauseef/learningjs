@@ -1,0 +1,17 @@
+def armstrong_check(num):
+     sum_cubes = 0
+     for digit in str(num):
+         cube_digit = int(digit)**3
+         sum_cubes += cube_digit
+     if sum_cubes == num :
+        print "ARMSTRONG"
+     else:
+        print "NOT ARMSTRONG"
+"""
+>>> armstrong_check(153)
+ARMSTRONG
+>>> armstrong_check(326)
+NOT ARMSTRONG
+>>> armstrong_check(1531)
+NOT ARMSTRONG
+"""
