@@ -1,0 +1,70 @@
+$primary-dark-color: #7f8fa4;
+$pure-white: #fff;
+$primary-accent-color: #3776d1;
+
+.basic-drop-menu {
+  .item-list {
+    box-shadow: 0 2px 14px 0 $primary-dark-color;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: 900;
+    background: $pure-white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    user-select: none;
+    z-index: 100;
+
+    .item {
+      padding: 8px;
+      width: 100px;
+      cursor: pointer;
+      color: $primary-dark-color;
+      transition: background-color 0.2s ease-in, color 0.2s ease-in;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid;
+      }
+
+      &:hover {
+        background-color: $primary-accent-color;
+        color: $pure-white;
+      }
+    }
+  }
+
+  &.open {
+    .item-list {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .profile-icon-section {
+      .profile-image-icon {
+        transform: rotate(0.5turn);
+      }
+    }
+  }
+
+  .profile-icon-section {
+    .profile-image-icon {
+      padding: 10px;
+      height: 25px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  .list-above {
+    bottom: 100%;
+  }
+
+  .list-below {
+    top: 100%;
+  }
+}
